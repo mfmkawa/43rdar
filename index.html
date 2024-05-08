@@ -1,34 +1,45 @@
-<!doctype HTML>
+<!DOCTYPE html>
 <html>
   <head>
     <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script> 
-    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-    <script src="script.js"></script>
+    <script src="script.js"></script>   
   </head>
-  
+  <body style="margin : 0px; overflow: hidden;">
+    <!-- minimal loader shown until image descriptors are loaded -->
+    <div class="arjs-loader">
+      <div>Loading, please wait...</div>
+    </div>
 
-<body style="margin : 0px; overflow: hidden;">
-  <a-scene embedded arjs="debugUIEnabled:false;">
-    <a-marker preset="hiro" id="marker-hiro" registerevents>
-      <a-box id="box" position="0 0.5 0" wireframe="true" rotation="270 270 270">
-        <a-animation
-          attribute="rotation"
-          from="270 270 270"
-          to="90 90 90"
-          dur="4000"
-          repeat="indefinite"
-          easing="ease">
-        </a-animation>
-      </a-box>
-    </a-marker>
-    <a-entity camera
-      cursor-visible="true"
-      cursor-scale="2"
-      cursor-color="#ff0000"
-      cursor-opacity="0.5">
-    </a-entity>
-  </a-scene>
-</body>
+    <a-scene
+      vr-mode-ui="enabled: false;"
+      emberdded
+      arjs="sourceType: webcam;debugUIEnabled: false;"
+    >
+      <a-nft
+        type="nft"        
+        url="marker/test"
+        smooth="true"
+        smoothCount="10"
+        smoothTolerance=".01"
+        smoothThreshold="5"
+      >
+        <a-box position="0 0 0" scale="70 70 70" wireframe="true"></a-box>
+      </a-nft>
+      <a-marker preset="hiro" id="marker-hiro" registerevents>
+        <a-box id="box" position="0 0.5 0" wireframe="true" rotation="270 270 270">
+          <a-animation
+            attribute="rotation"
+            from="270 270 270"
+            to="90 90 90"
+            dur="4000"
+            repeat="indefinite"
+            easing="ease">
+          </a-animation>
+        </a-box>
+      </a-marker>
+      <a-entity camera></a-entity>
+    </a-scene>
 
+  </body>
 </html>
